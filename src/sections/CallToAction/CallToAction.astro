@@ -1,0 +1,140 @@
+---
+import Button from "../../components/Button/Button.astro"
+interface iData {
+  contentText: string;
+  ctaLink: string;
+}
+const data = {
+  contentText: "Comprar ahora por solo $22.000 en Steam",
+  ctaLink: "https://google.com",
+  ctaText: "comprar ahora"
+}
+
+---
+
+<section class="ponshot-block ponshot-block--flush">
+  <div class="section-content cta__container">
+    <div class="cta__content">
+      <img src="assets/images/cta-bg.svg" alt="CTA Background" class="cta__background-shape">
+      <img src="assets/images/cta-bg-mobile.svg" alt="CTA Background" class="cta__background-shape cta__background-shape--mobile">
+      <div class="cta__content-wrapper">
+        <img src="assets/images/steam.svg" alt="Steam Logo" class="cta__content-image">
+        <h2 class="cta__content-description">{data.contentText}</h2>
+        <Button variant="orange" href={data.ctaLink}>{data.ctaText}</Button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss" scoped>
+  @use '../../styles/colors' as *;
+  @use '../../styles/typography' as *;
+
+  .ponshot-block {
+    overflow-x: clip;
+  }
+
+  .cta {
+    position: relative;
+
+    &__container {
+      position: relative;
+    }
+
+    &__background-shape {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      object-fit: cover;
+      display: none;
+
+      &--mobile {
+        display: block;
+        width: 100%;
+        height: 100%;
+        transform: translateY(-50%) translateX(-20%) scaleX(2);
+      }
+
+      @media (min-width: 460px) {
+        height: auto;
+      }
+
+      @media (min-width: 650px) {
+        &--mobile {
+          height: 100%;
+          width: auto;
+          transform: translateY(-50%) scaleX(2) scaleY(1.2);
+        }
+      }
+
+      @media (min-width: 1100px) {
+        display: block;
+
+        &--mobile {
+          display: none;
+        }
+      }
+    }
+
+    &__content {
+      padding: 5rem 0;
+      
+      @media (min-width: 450px) {
+        padding: 5rem 0;
+        max-width: 50rem;
+      }
+      
+      @media (min-width: 650px) {
+        padding: 5rem 4rem;
+      }
+      
+      @media (min-width: 850px) {
+        max-width: 60%;
+      }
+      
+      @media (min-width: 1100px) {
+        margin: 0 auto;
+        max-width: 80%;
+        padding: 0;
+      }
+    }
+    
+    &__content-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: clamp(2rem, 2.5vw, 10rem);
+      justify-content: space-between;
+      align-items: flex-start;
+      
+      @media (min-width: 1100px) {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    &__content-image {
+      width: 10rem;
+
+      @media (min-width: 650px) {
+        width: 15rem;
+      }
+    }
+
+    &__content-description {
+      font-size: 3.4rem;
+      color: #141414;
+      font-weight: 500;
+
+      @media (min-width: 650px) {
+        font-size: 4.8rem;
+      }
+    }
+
+    &__content-action {
+      flex-shrink: 0;
+    }
+  }
+
+</style>

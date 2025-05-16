@@ -1,0 +1,35 @@
+---
+import Hero from '../components/Hero/Hero.astro';
+import Overview from '../sections/Overview/Overview.astro';
+import CallToAction from '../sections/CallToAction/CallToAction.astro';
+import News from '../sections/News/News.astro';
+import Footer from '../sections/Footer/Footer.astro';
+import Layout from '../layouts/Layout.astro';
+import GsapInit from '../components/Animations/GsapInit.vue';
+const title = "Inicio | Ponshot";
+const description = "Un frenético videojuego tipo party donde el Dodgeball se conoce con el parkour.";
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<Layout {title} {description}>
+	<div id="smooth-wrapper">
+		<div id="smooth-content">
+			<main class="ponshot">
+				<Hero />
+				<Overview />
+				<CallToAction />
+				<News />
+			</main>
+			<Footer />
+		</div>
+	</div>
+	<GsapInit client:only="vue" />
+</Layout>
+
+<style lang="scss">
+	@use '../styles/colors' as *;
+	@use '../styles/layouts' as *;
+	@use '../styles/typography' as *;
+</style>

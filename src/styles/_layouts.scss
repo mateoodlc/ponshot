@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+}
+
+.smooth-content {
+  will-change: transform;
+}
+
+ul, li {
+  padding: 0;
+}
+
+body, .ponshot {
+  background-color: #141414;
+}
+
+section.ponshot-block {
+  margin: clamp(5rem, 2.5vw, 8rem) 0;
+
+  &--flush {
+    margin: 0;
+    padding: clamp(5rem, 4.5vw, 12rem) 0;
+  }
+
+  &--flush-spaced {
+    margin: 0;
+    padding: 5rem 0;
+    
+    @media (min-width: 980px) {
+      padding: 12rem 0;
+    }
+  }
+}
+
+.section-content {
+  max-width: 180rem;
+  margin: 0 auto;
+  padding: 0 clamp(2rem, 2vw, 4rem);
+
+  &--fluid {
+    max-width: 140rem;
+  }
+}

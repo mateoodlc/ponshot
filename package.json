@@ -1,0 +1,23 @@
+{
+  "name": "ponshot-astro",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.4.0",
+    "@astrojs/vue": "^4.0.8",
+    "@splidejs/splide": "^4.1.4",
+    "@splidejs/splide-extension-auto-scroll": "^0.5.3",
+    "@splidejs/vue-splide": "^0.6.12",
+    "astro": "^4.0.8",
+    "gsap": "^3.13.0",
+    "sass": "^1.87.0",
+    "sharp": "^0.33.2",
+    "vue": "^3.5.13"
+  }
+}

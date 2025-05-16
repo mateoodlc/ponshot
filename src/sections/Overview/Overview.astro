@@ -1,0 +1,258 @@
+---
+import { Image } from 'astro:assets';
+import InfiniteCarousel from '../../components/InfiniteCarousel/InfiniteCarousel.vue';
+import SplitText from '../../components/Animations/SplitText.vue';
+import SectionDivider from '../../components/SectionDivider/SectionDivider.astro'
+
+interface OverviewItem {
+  title: string;
+  description: string;
+  image: string;
+  decoration?: string;
+}
+
+interface CarouselImage {
+  src: string;
+  alt: string;
+  link: string;
+}
+
+const overviewData: OverviewItem[] = [
+  {
+    title: 'Feature 1',
+    description: 'Un frenético videojuego tipo party donde el Dodgeball se conoce con el parkour.',
+    image: '/assets/images/pyrobito.png',
+    decoration: '/assets/images/line-shape.svg'
+  },
+  {
+    title: 'Feature 2',
+    description: 'Apunta, lanza, esquiva, golpea y elimina a tus rivales con balonazos.',
+    image: '/assets/images/pyrobito-2.png',
+  },
+  {
+    title: 'Feature 3',
+    description: 'Muchos ponchadores para escoger, un narrador ocurrente y Pelotas con diferentes propiedades y funcionalidades.',
+    image: '/assets/images/balls.jpg',
+    decoration: '/assets/images/line-shape-2.svg'
+  },
+  {
+    title: 'Feature 4',
+    description: 'Desplázate libremente y combina movimientos acrobáticos para jugadas espectaculares',
+    image: '/assets/images/pyrobito-3.png',
+  },
+];
+
+const getThumbnail = (videoID: string): string => `http://img.youtube.com/vi/${videoID}/maxresdefault.jpg`;
+
+const carouselImages: CarouselImage[] = [
+  { 
+    src: getThumbnail("BvJRQftcBfk"), 
+    alt: "Imagen 1",
+    link: "https://youtu.be/BvJRQftcBfk?list=PLA4PPfiKBx4J4X35obsHBb1S_kmEPb8jz"
+  },
+  { 
+    src: getThumbnail("A4b1L8TLvNg"), 
+    alt: "Imagen 2",
+    link: "https://youtu.be/A4b1L8TLvNg?list=PLA4PPfiKBx4J4X35obsHBb1S_kmEPb8jz"
+  },
+  { 
+    src: getThumbnail("LMT1AB0eZfg"), 
+    alt: "Imagen 3",
+    link: "https://youtu.be/LMT1AB0eZfg?list=PLA4PPfiKBx4J4X35obsHBb1S_kmEPb8jz"
+  },
+  { 
+    src: getThumbnail("1IlcG85qEi4"), 
+    alt: "Imagen 4",
+    link: "https://youtu.be/1IlcG85qEi4?list=PLA4PPfiKBx4J4X35obsHBb1S_kmEPb8jz"
+  },
+  { 
+    src: getThumbnail("1_nw8hbz-Yw"), 
+    alt: "Imagen 5",
+    link: "https://youtu.be/1_nw8hbz-Yw?list=PLA4PPfiKBx4J4X35obsHBb1S_kmEPb8jz"
+  },
+  { 
+    src: getThumbnail("FKfIO6RojTk"), 
+    alt: 'Imagen 6',
+    link: "https://youtu.be/FKfIO6RojTk?list=PLA4PPfiKBx4J4X35obsHBb1S_kmEPb8jz"
+  },
+];
+---
+
+<section class="ponshot-block ponshot-block--flush overview">
+  <div class="section-content section-content--fluid">
+    <div class="overview__content">
+      {overviewData.map((item: OverviewItem, index: number) => (
+        <div class="overview__content-section" class:list={[index % 2 !== 0 && 'shaped-bg']}>
+          <div class="overview__content-section-decorator">
+            <SectionDivider />
+          </div>
+          <div class="overview__image-wrapper">
+            <img src={item.image} alt={item.title} class={`overview__image ${item.image === '/assets/images/balls.jpg' ? ' overview__image--lighten' : ''}`}>
+          </div>
+          <div class="overview__description-wrapper">
+            {((index === 2 || index === 0) && item.decoration ) && (
+            <img src={item.decoration} alt="Decoration Image" class="overview__texture-inner-decoration" />
+            )}
+            <p class="overview__description split">
+              {item.description}
+            </p>
+          </div>
+          <div class="overview__content-section-decorator">
+            <SectionDivider />
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+<section class="ponshot-block ponshot-block--flush ponshot-block--flush-spaced">
+  <div class="overview__multimedia">
+    <div class="section-content">
+      <img src="/assets/images/orange-shape.svg" alt="Orange Shape Decoration" class="overview__multimedia-decoration" />
+      <h2 class="overview__multimedia-title">Galería y Multimedia</h2>
+    </div>
+    <InfiniteCarousel client:load images={carouselImages} />
+  </div>
+  <SplitText client:only="vue" />
+</section>
+
+<style lang="scss">
+@use '../../styles/colors' as *;
+@use '../../styles/typography' as *;
+
+.ponshot-block:not(.ponshot-block--flush-spaced) .section-content {
+  padding: 0;
+}
+
+.overview {
+  position: relative;
+  background-color: #141414;
+  overflow-x: clip;
+
+  &__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+    margin-top: -45vw;
+    z-index: 2;
+
+    @media (min-width: 575px) {
+      margin-top: -16vw;
+    }
+  }
+
+  &__content-section {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    background-color: #141414;
+    padding: 10rem clamp(2rem, 2vw, 4rem);
+    
+    &:nth-child(even) {
+      flex-direction: row-reverse;
+      background-color: $primary-yellow;
+      padding: 5rem clamp(2rem, 2vw, 4rem);
+
+      .overview__description {
+        color: #141414;
+      }
+    }
+
+    &:nth-child(1) {
+      padding-top: 0;
+      background-color: transparent;
+    }
+
+    @media (min-width: 575px) {
+      flex-wrap: nowrap;
+    }
+  }
+
+  &__content-section-decorator {
+      display: none;
+      position: absolute;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 13;
+      z-index: 2;
+
+      &:first-of-type {
+        top: 0;
+        left: 50%;
+        transform: translateY(-94%) translateX(-50%)
+      }
+      
+      &:last-of-type {
+        bottom: 0;
+        left: 50%;
+        transform: translateY(93%) translateX(-50%) scaleY(-1);
+      }
+    }
+
+  &__content-section:nth-child(even) {
+    .overview__content-section-decorator {
+      display: block;
+    }
+  }
+
+  &__image-wrapper {
+    flex-grow: 1;
+    flex-shrink: 1;
+    aspect-ratio: 3 / 4;
+    max-width: 65rem;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__description-wrapper {
+    flex-shrink: 1;
+    max-width: 80rem;
+    width: 100%;
+
+    @media (min-width: 1200px) {
+      flex-shrink: 0;
+    }
+  }
+
+  &__description {
+    font-size: clamp(3rem, 4.5vw, 6.4rem);
+    font-weight: 600;
+    color: white;
+    line-height: 1.05;
+    letter-spacing: 0.1rem;
+    will-change: transform;
+  }
+
+  &__image--lighten {
+    mix-blend-mode: lighten;
+  }
+
+  &__multimedia {
+    position: relative;
+  }
+  
+  &__multimedia-title {
+    position: relative;
+    margin-bottom: 4rem;
+    z-index: 1;
+  }
+
+  &__multimedia-decoration {
+    position: absolute;
+    right: 4rem;
+    top: -8rem;
+    z-index: 0;
+  }
+}
+</style> 

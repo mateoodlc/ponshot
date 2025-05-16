@@ -1,0 +1,74 @@
+---
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { title = 'Ponshot | Creatividad sin límites', description = 'Un frenético videojuego tipo party donde el Dodgeball se conoce con el parkour.' } = Astro.props;
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href="https://ponshot.com/" />
+    <link rel="icon" href="/favicon.ico" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&family=Staatliches&display=swap" rel="stylesheet">
+
+    <!-- Optional: Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ponshot.com/" />
+    <meta property="og:image" content="https://ponshot.com/og-image.jpg" />
+
+    <!-- Optional: Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://ponshot.com/twitter-image.jpg" />
+  </head>
+
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style lang="scss" is:global>
+	@use '../styles/colors' as *;
+	@use '../styles/typography' as *;
+	@use '../styles/layouts' as *;
+	@use '../styles/global-components' as *;
+
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+		background-color: black;
+		color: white;
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	.section-content {
+		max-width: 140rem;
+		margin: 0 auto;
+		padding: 0 clamp(2rem, 2vw, 4rem);
+		
+		&--fluid {
+			max-width: 180rem;
+		}
+	}
+</style>
