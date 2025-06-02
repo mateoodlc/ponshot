@@ -32,11 +32,11 @@ onMounted(() => {
 
   const sectionBackgrounds = gsap.utils.toArray(".shaped-bg");
   if (!sectionBackgrounds.length) return;
-  const getTimeline = (section) => {
+  const triggerAnimation = (section) => {
     const shapes = section.querySelectorAll('.shaped-bg__decoration path');
-    gsap.from(section, {
+    gsap.to(section, {
       duration: 1.2,
-      backgroundColor: '#FFA500',
+      backgroundColor: '#F4D734',
       scrollTrigger: {
         trigger: section,
         start: "top center",
@@ -45,7 +45,7 @@ onMounted(() => {
       }
     }),
     shapes.forEach((shape) => {
-      gsap.from(shape, {
+      gsap.to(shape, {
         scrollTrigger: {
           trigger: section,
           start: "top center",
@@ -53,12 +53,12 @@ onMounted(() => {
           scrub: true
         }, 
         duration: 1.2, 
-        fill: "#FFA500", 
+        fill: "#F4D734", 
       });
     })
   }
   sectionBackgrounds.forEach(section => {
-    getTimeline(section)
+    triggerAnimation(section)
   })
 
 });

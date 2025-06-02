@@ -7,27 +7,29 @@ interface News {
   link: string;
 }
 
+const getThumbnail = (videoID: string): string => `http://img.youtube.com/vi/${videoID}/maxresdefault.jpg`;
+
 const newsData: News[] = [
   {
-    title: '¡Nueva actualización de Ponshot!',
-    description: 'Descubre las nuevas mecánicas y mejoras en la última actualización de Ponshot.',
-    image: '/assets/images/pyrobito-news--d.jpg',
+    title: 'PonShot lit up the ShinAnime Game Stage 2019',
+    description: 'The indie game stole the spotlight with fast-paced matches and an electrified crowd. PonShot debuted with full force!',
+    image: getThumbnail('0SslVX4Z2S0'),
     date: '2024/03/20',
-    link: 'https://steam.com/news/1'
+    link: 'https://www.youtube.com/watch?v=0SslVX4Z2S0&list=PLA4PPfiKBx4JOxItrYtL7dtpzA7Hno7aC&index=1'
   },
   {
-    title: 'Torneo Ponshot Championship',
-    description: 'Participa en el primer torneo oficial de Ponshot con premios increíbles.',
-    image: '/assets/images/pyrobito-news--d.jpg',
+    title: 'PonShot’s Best Moments at Gamers Day',
+    description: 'Unforgettable highlights as players pulled off insane moves. PonShot brought pure chaos and hype to the event.',
+    image: getThumbnail('Jp9w8QXplh8'),
     date: '2024/03/18',
-    link: 'https://steam.com/events/1'
+    link: 'https://www.youtube.com/watch?v=Jp9w8QXplh8&list=PLA4PPfiKBx4JOxItrYtL7dtpzA7Hno7aC&index=2'
   },
   {
-    title: 'Ponshot alcanza 100,000 jugadores',
-    description: '¡Gracias a todos por hacer de Ponshot un éxito! Celebramos este hito con regalos especiales.',
-    image: '/assets/images/pyrobito-news--d.jpg',
+    title: 'This is PonShot’s Voice: Narrator Revealed',
+    description: 'With a voice full of energy and attitude, PonShot’s narrator takes the action to the next level. Hit play and feel the hype!',
+    image: getThumbnail('tDNijpX1Kow'),
     date: '2024/03/15',
-    link: 'https://steam.com/events/1'
+    link: 'https://www.youtube.com/watch?v=tDNijpX1Kow'
   },
 ]; 
 
@@ -35,7 +37,7 @@ const newsData: News[] = [
 
 <section class="ponshot-block ponshot-block--flush-spaced">
   <div class="section-content">
-    <h2>Noticias y Actualizaciones</h2>
+    <h2>News & Updates</h2>
     <ul class="news__list">
       {
         newsData.map((news) => <li class="news__list-item">

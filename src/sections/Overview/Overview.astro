@@ -20,24 +20,24 @@ interface CarouselImage {
 const overviewData: OverviewItem[] = [
   {
     title: 'Feature 1',
-    description: 'Un frenético videojuego tipo party donde el Dodgeball se conoce con el parkour.',
+    description: 'Welcome to Ponshot, an electrifying party game of an hybrid of Dodge-ball and Parkour in 2.5D platforms.',
     image: '/assets/images/pyrobito.png',
     decoration: '/assets/images/line-shape.svg'
   },
   {
     title: 'Feature 2',
-    description: 'Apunta, lanza, esquiva, golpea y elimina a tus rivales con balonazos.',
+    description: "Dodge Like a ninja, aim, Shoot and blast your rivals with powerful ball strikes, they don't just break bones, they shatter friendships!",
     image: '/assets/images/pyrobito-2.png',
   },
   {
     title: 'Feature 3',
-    description: 'Muchos ponchadores para escoger, un narrador ocurrente y Pelotas con diferentes propiedades y funcionalidades.',
+    description: 'Enjoy playing with authentic characters, balls with crazy physics, witty announcer and many game modes for endless fun.',
     image: '/assets/images/balls.jpg',
     decoration: '/assets/images/line-shape-2.svg'
   },
   {
     title: 'Feature 4',
-    description: 'Desplázate libremente y combina movimientos acrobáticos para jugadas espectaculares',
+    description: 'Unleash your freedom of movement and chain acrobatic maneuvers into jaw-dropping plays.',
     image: '/assets/images/pyrobito-3.png',
   },
 ];
@@ -109,7 +109,7 @@ const carouselImages: CarouselImage[] = [
   <div class="overview__multimedia">
     <div class="section-content">
       <img src="/assets/images/orange-shape.svg" alt="Orange Shape Decoration" class="overview__multimedia-decoration" />
-      <h2 class="overview__multimedia-title">Galería y Multimedia</h2>
+      <h2 class="overview__multimedia-title">Multimedia Gallery</h2>
     </div>
     <InfiniteCarousel client:load images={carouselImages} />
   </div>
@@ -157,11 +157,15 @@ const carouselImages: CarouselImage[] = [
     
     &:nth-child(even) {
       flex-direction: row-reverse;
-      background-color: $primary-yellow;
+      background-color: $orange-light;
       padding: 5rem clamp(2rem, 2vw, 4rem);
-
+      
       .overview__description {
         color: #141414;
+      }
+      
+      @media (min-width: 575px) {
+        padding: 0rem clamp(2rem, 2vw, 4rem);
       }
     }
 

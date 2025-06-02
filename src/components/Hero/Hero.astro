@@ -2,12 +2,24 @@
 import { Image } from 'astro:assets';
 import Logo from '../Logo/Logo.astro';
 import Button from '../../components/Button/Button.astro'
+import SocialButton from '../SocialButton/SocialButton.astro';
 
 let isVertical = false;
+const socialLinks = [
+  { name: 'tiktok', href: 'https://www.tiktok.com/@playponshot' },
+  { name: 'instagram', href: 'https://www.instagram.com/playponshot/' },
+  { name: 'youtube', href: 'https://www.youtube.com/@playponshot2813' },
+  { name: 'discord', href: 'https://discord.gg/yRYddCwxEy' },
+] as const;
 
 ---
 
 <div id="homepage-video" class="hero">
+  <div class="hero__social">
+    {socialLinks.map(({ name, href }) => (
+      <SocialButton name={name} href={href} />
+    ))}
+  </div>
   <div class="hero__video">
     <iframe 
       id="homepage-video" 
@@ -24,8 +36,8 @@ let isVertical = false;
     <img src="/assets/ponshot-logo.svg" class="hero__logo" alt="Ponshot Logo" />
      <!-- <Logo class="hero__logo" /> -->
     <div class="hero__actions">
-      <Button>Comprar Ahora</Button>
-      <Button variant="alternative">Ver trailer</Button>
+      <Button href="https://www.canva.com/design/DAGji2isWdA/OsOgCv1-lCtJmFEN0o_bWQ/edit?utm_content=DAGji2isWdA&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Pitch Deck</Button>
+      <Button href="https://www.youtube.com/watch?v=BvJRQftcBfk" variant="alternative">Watch Trailer</Button>
     </div>
   </div>
 </div>
@@ -68,7 +80,7 @@ let isVertical = false;
       left: 0;
       width: 100%;
       height: 102%;
-      background: linear-gradient(180deg,rgba(20, 20, 20, 0.1) 0%, rgba(#141414, 1) 97%);
+      background: linear-gradient(180deg,rgba(20, 20, 20, 0.1) 45%, rgba(#141414, 1) 97%);
     }
 
     &__video {
@@ -85,7 +97,6 @@ let isVertical = false;
     }
 
     &__logo {
-      opacity: 0.7;
       transform: translateX(-7%);
     }
 
@@ -117,9 +128,18 @@ let isVertical = false;
       display: flex;
       flex-wrap: wrap;
       column-gap: 4rem;
-      row-gap: 1rem;
+      row-gap: 3rem;
       align-items: center;
       justify-content: center;
+    }
+    
+    &__social {
+      display: flex;
+      gap: 2rem;
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      z-index: 2;
     }
   }
 </style> 

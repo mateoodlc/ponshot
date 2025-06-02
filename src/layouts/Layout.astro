@@ -14,7 +14,8 @@ const { title = 'Ponshot | Creatividad sin límites', description = 'Un frenéti
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href="https://ponshot.com/" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.svg" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&family=Staatliches&display=swap" rel="stylesheet">
@@ -42,8 +43,6 @@ const { title = 'Ponshot | Creatividad sin límites', description = 'Un frenéti
 	@use '../styles/colors' as *;
 	@use '../styles/typography' as *;
 	@use '../styles/layouts' as *;
-	@use '../styles/global-components' as *;
-
 	html,
 	body {
 		margin: 0;
@@ -68,7 +67,7 @@ const { title = 'Ponshot | Creatividad sin límites', description = 'Un frenéti
 		padding: 0 clamp(2rem, 2vw, 4rem);
 		
 		&--fluid {
-			max-width: 180rem;
+			max-width: 210rem;
 		}
 	}
 </style>
